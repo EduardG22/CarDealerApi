@@ -1,4 +1,4 @@
-package com.cardealer.car.model;
+package com.cardealer.car.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true)
-public class Cars {
+public class Car {
 
     @Id
     @GeneratedValue

@@ -1,10 +1,10 @@
 package com.cardealer.car.service;
 
-import com.cardealer.car.model.Cars;
-import com.cardealer.car.model.Customer;
-import com.cardealer.car.model.Employee;
-import com.cardealer.car.model.Sale;
-import com.cardealer.car.repository.CarsRepository;
+import com.cardealer.car.entity.Car;
+import com.cardealer.car.entity.Customer;
+import com.cardealer.car.entity.Employee;
+import com.cardealer.car.entity.Sale;
+import com.cardealer.car.repository.CarRepository;
 import com.cardealer.car.repository.CustomerRepository;
 import com.cardealer.car.repository.EmployeeRepository;
 import com.cardealer.car.repository.SaleRepository;
@@ -20,7 +20,7 @@ public class SaleServiceImpl implements SaleService {
 
     SaleRepository saleRepository;
     EmployeeRepository employeeRepository;
-    CarsRepository carsRepository;
+    CarRepository carsRepository;
     CustomerRepository customerRepository;
 
     @Override
@@ -32,7 +32,7 @@ public class SaleServiceImpl implements SaleService {
     public Sale saveSale(Sale sale, Long employeeId, Long carId, Long customerId) {
 
         Employee employee = employeeRepository.findById(employeeId).get();
-        Cars car = carsRepository.findById(carId).get();
+        Car car = carsRepository.findById(carId).get();
         Customer customer = customerRepository.findById(customerId).get();
 
         sale.setEmployee(employee);

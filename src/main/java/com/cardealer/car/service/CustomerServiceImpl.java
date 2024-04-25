@@ -1,7 +1,7 @@
 package com.cardealer.car.service;
 
 import com.cardealer.car.exceptions.EntityNotFoundException;
-import com.cardealer.car.model.Customer;
+import com.cardealer.car.entity.Customer;
 import com.cardealer.car.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

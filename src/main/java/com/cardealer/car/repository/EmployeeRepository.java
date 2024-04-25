@@ -1,6 +1,6 @@
 package com.cardealer.car.repository;
 
-import com.cardealer.car.model.Employee;
+import com.cardealer.car.entity.Employee;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

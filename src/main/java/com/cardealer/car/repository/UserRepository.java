@@ -1,9 +1,10 @@
 package com.cardealer.car.repository;
 
-import com.cardealer.car.model.UserEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.cardealer.car.entity.User;
+import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    UserEntity findByEmail(String email);
-    UserEntity findByUsername(String username);
+import java.util.Optional;
+
+public interface UserRepository extends CrudRepository<User, Long> {
+  Optional<User> findByUsername(String username);
 }

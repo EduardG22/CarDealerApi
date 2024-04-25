@@ -1,4 +1,4 @@
-package com.cardealer.car.model;
+package com.cardealer.car.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,7 +31,7 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name = "car_id",referencedColumnName = "id")
-    private Cars car;
+    private Car car;
 
 
     @ManyToOne

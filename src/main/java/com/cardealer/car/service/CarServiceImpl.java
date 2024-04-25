@@ -1,8 +1,8 @@
 package com.cardealer.car.service;
 
 import com.cardealer.car.exceptions.EntityNotFoundException;
-import com.cardealer.car.model.Cars;
-import com.cardealer.car.repository.CarsRepository;
+import com.cardealer.car.entity.Car;
+import com.cardealer.car.repository.CarRepository;
 import com.cardealer.car.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,34 +11,45 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CarsServiceImpl implements CarsService {
+public class CarServiceImpl implements CarService {
 
     @Autowired
-    CarsRepository carsRepository;
+    CarRepository carRepository;
 
     @Autowired
     CustomerRepository customerRepository;
 
     @Override
-    public Cars getCars(Long id) {
-        Optional<Cars> cars = carsRepository.findById(id);
+    public Car getCars(Long id) {
+        Optional<Car> cars = carRepository.findById(id);
         return unwrapCar(cars,id);
     }
 
 
     @Override
-    public Cars saveCar(Cars cars, Long carId) {
-        return carsRepository.save(cars);
+    public Car saveCar(Car cars, Long carId) {
+        return carRepository.save(cars);
+    }
+
+    @Override
+    public Car updateCar(Long id, Car updateCar) {
+        Car car = carRepository.findById(id).get();
+        car.setColor(updateCar.getColor());
+        car.setType(updateCar.getType());
+        car.setModel(updateCar.getModel());
+        car.setRegistration(updateCar.getRegistration());
+        car.setIsAvailable(updateCar.getIsAvailable());
+        return carRepository.save(car);
     }
 
     @Override
     public void deleteCar(Long id) {
-      carsRepository.deleteById(id);
+      carRepository.deleteById(id);
     }
 
     @Override
-    public List<Cars> getAllCars() {
-        return (List<Cars>) carsRepository.findAll();
+    public List<Car> getAllCars() {
+        return (List<Car>) carRepository.findAll();
     }
 
 //    @Override
@@ -50,8 +61,8 @@ public class CarsServiceImpl implements CarsService {
 //        return carsRepository.save(car);
 //    }
 
-    static Cars unwrapCar(Optional<Cars> entity, Long id) {
+    static Car unwrapCar(Optional<Car> entity, Long id) {
         if(entity.isPresent()) return entity.get();
-        else throw new EntityNotFoundException(id, Cars.class);
+        else throw new EntityNotFoundException(id, Car.class);
     }
 }

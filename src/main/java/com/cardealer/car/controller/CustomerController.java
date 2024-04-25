@@ -1,7 +1,8 @@
 package com.cardealer.car.controller;
 
-import com.cardealer.car.model.Customer;
+import com.cardealer.car.entity.Customer;
 import com.cardealer.car.service.CustomerService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "customer")
+@Tag(name = "Customers")
 public class CustomerController {
 
     @Autowired

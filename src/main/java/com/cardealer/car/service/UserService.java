@@ -1,5 +1,9 @@
 package com.cardealer.car.service;
 
-public interface UserService {
+import com.cardealer.car.entity.User;
 
+public interface UserService {
+   User getUser(Long id);
+   User getUser(String username);
+   User saveUser(User user);
 }

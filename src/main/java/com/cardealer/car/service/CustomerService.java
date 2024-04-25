@@ -1,6 +1,6 @@
 package com.cardealer.car.service;
 
-import com.cardealer.car.model.Customer;
+import com.cardealer.car.entity.Customer;
 
 import java.util.List;
 

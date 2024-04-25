@@ -1,7 +1,8 @@
 package com.cardealer.car.controller;
 
-import com.cardealer.car.model.Employee;
+import com.cardealer.car.entity.Employee;
 import com.cardealer.car.service.EmployeeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "employee")
+@Tag(name = "Employees")
 public class EmployeeController {
 
     @Autowired
@@ -34,6 +36,12 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee updatedEmplyee){
         return new ResponseEntity<>(employeeService.updateEmployee(id,updatedEmplyee), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable Long id){
+        employeeService.deleteEmployee(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
