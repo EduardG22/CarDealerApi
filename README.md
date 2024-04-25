@@ -1,4 +1,4 @@
-# Car Dealer 
+# Car Dealer API
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
